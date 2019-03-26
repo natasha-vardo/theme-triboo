@@ -1,0 +1,137 @@
+<?php
+$_product = $this->getProduct();
+$_helper = $this->helper('catalog/output');
+?>
+<?php $buttonTitle = Mage::helper('core')->quoteEscape($this->__('Add to Cart')); ?>
+<?php if ($_product->isSaleable()): ?>
+    <div class="add-to-cart">
+        <?php if (!$_product->isGrouped()): ?>
+            <div class="qty-wrapper">
+                <label for="qty" id="qty-label"><?php echo $this->__('Qty:') ?></label>
+                <input type="text" pattern="\d*(\.\d+)?" name="qty" id="qty" maxlength="12"
+                       value="<?php echo $this->getProductDefaultQty() * 1 ?>"
+                       title="<?php echo Mage::helper('core')->quoteEscape($this->__('Qty')) ?>"
+                       class="input-text qty" />
+            </div>
+        <br><br><br>
+        <?php endif; ?>
+        <div class="add-to-cart-buttons">
+            <button id="button-green" type="button" title="<?php echo $buttonTitle ?>"
+                    class="button" onclick="productAddToCartForm.submit(this)"><span>
+                    <span><?php echo $buttonTitle ?></span></span></button>
+        </div>
+        <div class="add-to-cart-buttons">
+            <div class="button-black">
+            <button type="button" id="button-black" class="button"><span>PERSONALIZZA</span></button>
+                <div class="popuptext" id="myPopup">
+                    <div class="modal">
+                        <div class="product-shop-block">
+                            <div class="close-modal" id="close-modal"> X </div>
+                            <div class="product-name">
+                                <span class="h1" id="h1-block">
+                                    <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+                                </span>
+                            </div>
+                            <div class="product-image-gallery">
+                            <img id="popup-image"
+                                 src="<?php echo $this->helper('catalog/image')->init($_product, 'image') ?>"
+                                 alt="<?php echo $this->escapeHtml($this->getImageLabel()) ?>"
+                                 title="<?php echo $this->escapeHtml($this->getImageLabel()); ?>" />
+                            </div>
+                            <div class="pr-div">
+                            <?php if ($_product->getShortDescription()):?>
+                                <div class="short-description">
+                                    <div class="std">
+                                        <?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?>
+                                    </div>
+                                </div>
+                            <?php endif;?>
+                                <div class="more-details-block">
+                                    <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                                        <?php echo $this->getChildChildHtml('product.info.options.wrapper') ?>
+                                    <?php endif;?>
+                                </div>
+
+                                <div class="qty-div">
+                                    <div class="price-info" id="price-info-block">
+                                        <?php echo $this->getPriceHtml($_product); ?>
+                                        <?php echo $this->getChildHtml('bundle_prices') ?>
+                                        <?php echo $this->getTierPriceHtml() ?>
+                                    </div>
+                                    <div class="qty-wrapper">
+                                        <label for="qty" id="qty-label"><?php echo $this->__('Qt.') ?></label>
+                                        <input type="text" pattern="\d*(\.\d+)?" name="qty" id="qty-modal" maxlength="12"
+                                               value="<?php echo $this->getProductDefaultQty() * 1 ?>"
+                                               title="<?php echo Mage::helper('core')->quoteEscape($this->__('Qty')) ?>"
+                                               class="input-text qty" />
+                                        <div class="button-plus" onclick="inc(1)">
+                                            <img src="<?php echo Mage::getBaseUrl('media').'icons/arr-up.png'?>"/>
+                                        </div>
+                                        <div class="button-minus" onclick="inc(-1)">
+                                            <img src="<?php echo Mage::getBaseUrl('media').'icons/arr-down.png'?>"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="add-to-cart-buttons">
+                                        <button id="button-green" type="button" title="<?php echo $buttonTitle ?>"
+                                                class="button" onclick="productAddToCartForm.submit(this)">
+                                            <span><span><?php echo $buttonTitle ?></span></span></button>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="popup-footer">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Aenean vestibulum semper velit eget ullamcorper.
+                                Cras at ligula tortor. Praesent at ultricies risus,
+                                ornare pharetra ex. Vivamus vel scelerisque lectus.
+                                Nulla et purus quis sem finibus commodo quis id lacus.
+                                Fusce vehicula, odio tempor iaculis ultrices, quam ipsum
+                                pulvinar sem, sit amet tempus ipsum risus vitae dolor.
+                                Sed ut magna fermentum, vestibulum ex vitae, cursus tortor.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+
+<script>
+    var modal = document.getElementById('myPopup');
+    var btnOpen = document.getElementById("button-black");
+    var btnClose = document.getElementsByClassName("close-modal")[0];
+
+    btnOpen.onclick = function() {
+        modal.style.display = "block";
+    };
+
+    btnClose.onclick = function() {
+        modal.style.display = "none";
+    };
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+
+    var qty = document.getElementById("qty");
+    var qtyModal = document.getElementById("qty-modal");
+
+    function inc(N) {
+        var count =  parseInt(document.getElementById("qty-modal").value);
+
+        count+=N;
+
+        if (count <= 0) {
+            count = 1;
+        } else {
+            qty.value = count;
+            qtyModal.value = count;
+        }
+    }
+
+</script>

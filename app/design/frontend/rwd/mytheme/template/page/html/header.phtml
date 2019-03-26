@@ -1,0 +1,56 @@
+<?php
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+<div class="header-info-text">Some information...</div>
+
+<div class="block-header" id="block-header">
+<header id="header" class="page-header">
+    <div class="page-header-container">
+        <ul>
+            <li>
+                <a class="logo" href="<?php echo $this->getUrl('') ?>">
+                    <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="large" />
+                    <img src="<?php echo $this->getLogoSrcSmall() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="small" />
+                </a>
+            </li>
+            <li>
+                <div id="header-nav" class="skip-content">
+                    <?php echo $this->getChildHtml('topMenu') ?>
+                </div>
+            </li>
+            <li>
+            <ul>
+                <li>
+                    <?php echo $this->getChildHtml('topSearch') ?>
+                </li>
+                <li>
+                    <div class="acc">
+                    <a href="<?php echo $this->helper('customer')->getAccountUrl(); ?>"
+                       data-target-element="#header-account"
+                       class="skip-link skip-account">
+                        <span class="icon"></span>
+                        <span class="label"><?php echo $this->__(''); ?></span>
+                    </a>
+                    </div>
+                </li>
+                <!-- Cart -->
+                <li>
+                    <div class="header-minicart">
+                        <?php echo $this->getChildHtml('minicart_head'); ?>
+                    </div>
+                </li>
+            </ul>
+            </li>
+        <!-- Account -->
+        <div id="header-account" class="skip-content">
+            <?php echo $this->getChildHtml('topLinks') ?>
+        </div>
+    </ul>
+ </div>
+
+</header>
+</div>
+
+<?php echo $this->getChildHtml('topContainer'); ?>
