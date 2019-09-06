@@ -1,0 +1,115 @@
+<div class="main-footer">
+    <div class="footer" id="footer">
+        <div class="footer-content">
+            <div class="block block-subscribe" id="block-subscribe">
+                <div class="block-title">
+                    <strong><div><?php echo $this->__('Newsletter') ?></div></strong>
+                </div>
+                <div class="block-subscribe-info">
+                    <p>Promo e novita dal mondo Legami.<br> Ricevi subito il 10% disconto sul tuo primo ordine!</p>
+
+                </div>
+                <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail">
+                    <div class="block-content">
+                        <div class="form-subscribe-header">
+                            <label for="newsletter"><?php echo $this->__('Sign Up for Our Newsletter:') ?></label>
+                        </div>
+                        <div class="input-box" id="input-box">
+                            <button type="submit"
+                                    title="<?php echo Mage::helper('core')->quoteEscape($this->__('Subscribe')) ?>"
+                                    class="button-newsletter">
+                                <span>
+                                    <span>
+                                        <img class="button-newsletter-img" src="http://127.0.0.1:8000/media/icons/arrow-right-black.png">
+                                    </span>
+                                </span>
+                            </button>
+                            <input type="email"
+                                   autocapitalize="off"
+                                   autocorrect="off"
+                                   spellcheck="false"
+                                   name="email"
+                                   id="newsletter"
+                                   title="<?php echo Mage::helper('core')->quoteEscape($this->__('Sign up for our newsletter')) ?>"
+                                   class="input-text required-entry validate-email"
+                                   placeholder="INTER YOUR EMAIL ADDRESS" />
+                            <div class="private-policy">
+                                <input id="policy" name="policy" value="yes" type="checkbox">
+                                <label for="policy">I read the private policy...</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <script type="text/javascript">
+                    //<![CDATA[
+                    var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+                    //]]>
+                </script>
+            </div>
+            <div class="social-links-footer">
+                <div class="footer-title-icons">
+                <div class="social-links-title">SEGYUICI SUI SOCIAL</div>
+                <div class="social-links-icon">
+                    <div class="icon-center">
+                    <a href="https://www.facebook.com/login.php">
+                        <img src="<?php echo Mage::getBaseUrl('media').'icons/facebook.png'?>?>"/>
+                    </a>
+                    <a href="https://twitter.com/login">
+                        <img src="<?php echo Mage::getBaseUrl('media').'icons/twitter.png'?>"/>
+                    </a>
+                    <a href="https://www.pinterest.com/login">
+                        <img src="<?php echo Mage::getBaseUrl('media').'icons/pinterest.png'?>"/>
+                    </a>
+                    <a href="https://www.instagram.com/accounts/login">
+                        <img src="<?php echo Mage::getBaseUrl('media').'icons/instagram.png'?>"/>
+                    </a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="links-footer">
+            <div class="links-div">
+            <div class="links-block">
+                <div class="icon-footer">
+                    <img src="<?php echo Mage::getBaseUrl('media').'icons/rocket-footer.png'?>"/>
+                </div>
+                <div class="div-footer-links">
+                    <a href="#">about us</a><br/>
+                    <a href="#">ethical code</a><br/>
+                    <a href="#">legami for life</a>
+                </div>
+            </div>
+            <div class="links-block">
+                <div class="icon-footer">
+                    <img src="<?php echo Mage::getBaseUrl('media').'icons/document-footer.png'?>"/>
+                </div>
+                <div class="div-footer-links">
+                    <a href="#">lavora con noi</a><br/>
+                    <a href="#">special for <br/> bussinesses</a>
+                </div>
+            </div>
+            <div class="links-block">
+                <div class="icon-footer">
+                    <img src="<?php echo Mage::getBaseUrl('media').'icons/geo-footer.png'?>"/>
+                </div>
+                <div class="div-footer-links">
+                    <a href="#">contattaci</a>
+                </div>
+            </div>
+            </div>
+        </div>
+            <div class="footer-address">
+                <div class="footer-info-block">
+                    <a href="#">Contatti</a> |
+                    <a href="#">Condizioni di vendita</a> |
+                    <a href="#">Condizioni d'uso</a> |
+                    <a href="#">Informativa sul diritto di recesso</a> |
+                    <a href="#">Risoluzione controversie</a> |
+                    <a href="#">Paesi e tempi di spedizione</a> |
+                    <a href="#">Privacy</a> |
+                    <a href="#">Cookie</a>
+                </div>
+                <address class="copyright"><?php echo $this->getCopyright() ?></address>
+            </div>
+</div>
